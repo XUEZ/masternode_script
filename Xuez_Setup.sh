@@ -18,33 +18,29 @@ echo""
 echo""
 echo""
 
-echo "Do you want to install all needed updates (no if you did it before)? [y/n]"
-read DOSETUP
-
-if [[ $DOSETUP =~ "y" ]] ; then
-  sudo apt-get update
-  sudo apt-get -y upgrade
-  sudo apt-get -y dist-upgrade
+echo "Installing needed updates
+sudo apt-get update
+sudo apt-get -y upgrade
+sudo apt-get -y dist-upgrade
 
 
-  cd /var
-  sudo touch swap.img
-  sudo chmod 600 swap.img
-  sudo dd if=/dev/zero of=/var/swap.img bs=1024k count=2000
-  sudo mkswap /var/swap.img
-  sudo swapon /var/swap.img
-  sudo free
-  sudo echo "/var/swap.img none swap sw 0 0" >> /etc/fstab
-  cd
+cd /var
+sudo touch swap.img
+sudo chmod 600 swap.img
+sudo dd if=/dev/zero of=/var/swap.img bs=1024k count=2000
+sudo mkswap /var/swap.img
+sudo swapon /var/swap.img
+sudo free
+sudo echo "/var/swap.img none swap sw 0 0" >> /etc/fstab
+cd
+sudo apt-get install -y ufw
+sudo ufw allow ssh/tcp
+sudo ufw limit ssh/tcp
+sudo ufw allow 41798/tcp
+sudo ufw logging on
 
-  sudo apt-get install -y ufw
-  sudo ufw allow ssh/tcp
-  sudo ufw limit ssh/tcp
-  sudo ufw allow 41798/tcp
-  sudo ufw logging on
-
-  echo "y" | sudo ufw enable
-  sudo ufw status
+echo "y" | sudo ufw enable
+sudo ufw status
 fi
 
 wget https://github.com/XUEZ/xuez/releases/download/1.0.1.7/xuez-linux-cli-1017.tgz
