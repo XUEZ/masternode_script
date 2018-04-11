@@ -1,6 +1,6 @@
 #/bin/bash
 
-cd /root/
+cd ~
 echo "****************************************************************************"
 echo "* This script will install and configure your XUEZ Coin masternodes.       *"
 echo "*                    Love from A_Block_Nut(Thermo) ;)                      *"
