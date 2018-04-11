@@ -18,7 +18,7 @@ To run the script simply type the following commands into your VPS terminal.
 
 - Unique IP address for EACH masternode
 
-<h1> Local Wallet procedure </h1>
+<h1> Local Wallet Procedure </h1>
 
 Step 1) Download, install and sync your Xuez wallet
 Download link for all Operating systems:
