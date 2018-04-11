@@ -43,13 +43,10 @@ if [[ $DOSETUP =~ "y" ]] ; then
 
   echo "y" | sudo ufw enable
   sudo ufw status
-
- 
 fi
 
 wget https://github.com/XUEZ/xuez/releases/download/1.0.1.7/xuez-linux-cli-1017.tgz
 tar -xzfv xuez-linux-cli-1017.tar.gz
-
 
 echo ""
 echo "Configure your masternodes now!"
@@ -80,8 +77,6 @@ echo "" >> $CONF_DIR/$CONF_FILE
 echo "port=$PORT" >> $CONF_DIR/$CONF_FILE
 echo "masternodeaddr=$IP:$PORT" >> $CONF_DIR/$CONF_FILE
 echo "masternodeprivkey=$PRIVKEY" >> $CONF_DIR/$CONF_FILE
-
-
 
 ./xuez-cli -daemon
 echo "if server start failure try ./xuezd -reindex"
