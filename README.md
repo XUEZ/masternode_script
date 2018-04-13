@@ -10,7 +10,7 @@ To run the script simply type the following commands into your VPS terminal.
 
 - chmod 755 Xuez_Setup.sh
 
-- ./Xuez_setup.sh
+- ./Xuez_Setup.sh
 
 <h1> Masternode Basic Requierments </h1>
 
