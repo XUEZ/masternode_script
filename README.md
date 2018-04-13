@@ -54,7 +54,7 @@ Step 6) Locate your masternode.conf and add the following line:
 Note: Substitute it with your own values and without the “<>”s
 
 Example:
-MN1 31.11.135.27:31799 892WPpkqbr7sr6Si4fdsfssjjapuFzAXwETCrpPJubnrmU6aKzh c8f4965ea57a68d0e6dd384324dfd28cfbe0c801015b973e7331db8ce018716999 1
+MN1 31.11.135.27:41798 892WPpkqbr7sr6Si4fdsfssjjapuFzAXwETCrpPJubnrmU6aKzh c8f4965ea57a68d0e6dd384324dfd28cfbe0c801015b973e7331db8ce018716999 1
 
 
 <h2> Run and follow the instructions on the script </h2> 
