@@ -56,6 +56,7 @@ CONF_DIR=~/.xuez\/
 CONF_FILE=xuez.conf
 PORT=41798
 mkdir -p $CONF_DIR
+rm -f -- $CONF_DIR/$CONF_FILE
 echo "rpcuser=user"`shuf -i 100000-10000000 -n 1` >> $CONF_DIR/$CONF_FILE
 echo "rpcpassword=passw"`shuf -i 100000-10000000 -n 1` >> $CONF_DIR/$CONF_FILE
 echo "rpcallowip=127.0.0.1" >> $CONF_DIR/$CONF_FILE
