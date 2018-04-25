@@ -6,7 +6,7 @@
 
 To run the script simply type the following commands into your VPS terminal. 
  
-- wget https://github.com/XUEZ/masternode_script/releases/download/1.1/Xuez_Setup.sh
+- wget https://github.com/XUEZ/masternode_script/releases/download/1.0/Xuez_Setup.sh
 
 - chmod 755 Xuez_Setup.sh
 
