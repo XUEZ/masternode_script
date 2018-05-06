@@ -47,8 +47,8 @@ if [[ $DOSETUP =~ "y" ]] ; then
  
 fi
 
-wget https://github.com/XUEZ/xuez/releases/download/1.0.1.7/xuez-linux-cli-1017.tgz
-tar -xzfv xuez-linux-cli-1017.tar.gz
+wget https://github.com/XUEZ/xuez/releases/download/1.0.1.8/xuez-linux-cli-1018.tgz
+tar -xzfv xuez-linux-cli-1018.tar.gz
 
 
 echo ""
