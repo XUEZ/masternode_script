@@ -35,8 +35,8 @@ read DOSETUP
 fi
 
 echo ""
-wget https://github.com/XUEZ/xuez/releases/download/1.0.1.8/xuez-linux-cli-1018.tgz
-tar -xvzf xuez-linux-cli-1018.tgz
+wget https://github.com/XUEZ/xuez/releases/download/1.0.1.9/xuez-linux-cli-1019.tgz
+tar -xvzf xuez-linux-cli-1019.tgz
 echo ""
 echo "Configure your masternodes now!"
 echo "Your recognised IP address is:"
