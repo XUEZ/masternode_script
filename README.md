@@ -49,7 +49,7 @@ Step 5)  Using your main wallet, wait for 15 confirmations, and then enter the d
 
 Step 6) Locate your masternode.conf and add the following line: 
 
-<INSERT_CHOOSEN_MASTERNODE_NAME> <Unique IP address>:41799 <MASTERNODE_GENKEY> <MASTERNODE_OUTPUT> <NUMBER_AFTER_MASTERNODE_OUTPUT_1_OR_0>
+<INSERT_CHOOSEN_MASTERNODE_NAME> <Unique IP address>:41798 <MASTERNODE_GENKEY> <MASTERNODE_OUTPUT> <NUMBER_AFTER_MASTERNODE_OUTPUT_1_OR_0>
 
 Note: Substitute it with your own values and without the “<>”s
 
