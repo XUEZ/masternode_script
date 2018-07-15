@@ -3,10 +3,8 @@ cd ~
 echo "****************************************************************************"
 echo "*                        XUEZ WALLET UPDATE SCRIPT                         *"
 echo "****************************************************************************"
-sudo apt-get update
-sudo apt-get -y upgrade
-sudo apt-get -y dist-upgrade
 ./xuez-cli stop
+pkill -9 xuezd
 rm ~/.xuez/peers.dat
 rm ~/.xuez/mnpayments.dat
 rm ~/.xuez/mncache.dat
