@@ -4,6 +4,7 @@ echo "**************************************************************************
 echo "*                        XUEZ WALLET UPDATE SCRIPT                         *"
 echo "****************************************************************************"
 ./xuez-cli stop 
+pkill -9 xuezd
 rm xuezd 
 rm xuez-cli 
 rm xuez-tx 
