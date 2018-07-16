@@ -53,7 +53,8 @@ tar -xvzf xuez-linux-cli-10110.tgz
 echo ""
 
 echo "Are you installing a new Masternode (Y) Or updating to the most recent wallet (n)? [y/n]
-if [[ $IPDEFAULT =~ "y" ]] || [[$IPDEFAULT =~ "Y" ]] ; then
+read SETUP
+if [[ $SETUP =~ "y" ]] || [[$SETUP =~ "Y" ]] ; then
 
 echo "Configure your masternodes now!"
 echo "Your recognised IP address is:"
