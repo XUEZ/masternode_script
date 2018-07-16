@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://xuezcoin.com/wp-content/uploads/2018/02/xuez-logo.png" width="100"/>
+  <img src="https://pbs.twimg.com/media/DiLeYT2W4AQh7zA.png" width="100"/>
 </p>
 
 # <h>  VPS Masternode Setup script. </h>
