@@ -18,6 +18,15 @@ echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 echo ""
 echo ""
 echo ""
+echo "Do you want to create a user to configure your VPS out of ROOT (`y` if this is the first time) [y/n]"
+read USETUP
+	if 
+	[[ $USETUP =~ "y" ]] || [[$USETUP =~ "Y" ]] ; then
+sudo adduser notroot
+usermod -aG sudo notroot
+su -notroot
+fi
+
 echo "Do you want to configure your VPS with the recomended Xuez settings? [y/n]"
 read DOSETUP
 	if 
