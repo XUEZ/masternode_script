@@ -32,18 +32,18 @@ read DOSETUP
 	sudo ufw allow 22
 	echo "y" | sudo ufw enable
 	sudo ufw status
-  
-  sudo su -c "echo 'deb http://deb.torproject.org/torproject.org '$(lsb_release -c | cut -f2)' main' > /etc/apt/sources.list.d/torproject.list"
-  gpg --keyserver keys.gnupg.net --recv A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89
-  gpg --export A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 | sudo apt-key add -
-  sudo apt-get update
-  sudo apt-get install tor deb.torproject.org-keyring
-  sudo usermod -a -G debian-tor $(whoami)
-  sudo sed -i 's/#ControlPort 9051/ControlPort 9051/g' /etc/tor/torrc
-  sudo sed -i 's/#CookieAuthentication 1/CookieAuthentication 1/g' /etc/tor/torrc
-  sudo su -c "echo 'CookieAuthFileGroupReadable 1' >> /etc/tor/torrc"
-  sudo su -c "echo 'LongLivedPorts 9033' >> /etc/tor/torrc"
-  sudo systemctl restart tor.service
+  #ENABLE TOR SERVICE
+sudo su -c "echo 'deb http://deb.torproject.org/torproject.org '$(lsb_release -c | cut -f2)' main' > /etc/apt/sources.list.d/torproject.list"
+gpg --keyserver keys.gnupg.net --recv A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89
+gpg --export A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 | sudo apt-key add -
+sudo apt-get update
+sudo apt-get install tor deb.torproject.org-keyring
+sudo usermod -a -G debian-tor $(whoami)
+sudo sed -i 's/#ControlPort 9051/ControlPort 9051/g' /etc/tor/torrc
+sudo sed -i 's/#CookieAuthentication 1/CookieAuthentication 1/g' /etc/tor/torrc
+sudo su -c "echo 'CookieAuthFileGroupReadable 1' >> /etc/tor/torrc"
+sudo su -c "echo 'LongLivedPorts 9033' >> /etc/tor/torrc"
+sudo systemctl restart tor.service
 
 fi
 
@@ -128,6 +128,7 @@ fi
 
 else
 
+#UPDATE XUEZ WALLET AND TURN ON WITH TOR
 ./xuez-cli stop
 rm xuezd
 rm xuez-cli
@@ -135,4 +136,12 @@ rm xuez-tx
 wget https://github.com/XUEZ/xuez/releases/download/1.0.1.10/xuez-linux-cli-10110.tgz
 tar -xf xuez-linux-cli-10110.tgz
 rm xuez-linux-cli-10110.tgz
-./xuezd -resync 
+sudo su -c "echo 'listenonion=1' >> /.xuez/xuez.conf"
+./xuezd -reindex
+
+	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	echo "!                                                 !"
+	echo "!   It always seems impossible until it's done 	!"
+	echo "!      continue the local wallet setup guide      !"
+	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	echo ""
