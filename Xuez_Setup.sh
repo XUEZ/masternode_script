@@ -11,7 +11,7 @@ echo ""
 echo ""
 echo ""
 echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-echo "!                                                 !"
+echo "!         DO NOT RUN THIS SCRIPT AS ROOT          !"
 echo "! Make sure you double check before hitting enter !"
 echo "!                                                 !"
 echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
@@ -31,6 +31,9 @@ read DOSETUP
 	sudo ufw limit ssh/tcp
 	sudo ufw logging on
 	sudo ufw allow 22
+	sudo ufw allow 41798
+        sudo ufw allow 9051
+        sudo ufw allow 9033
 	echo "y" | sudo ufw enable
 	sudo ufw status
 
