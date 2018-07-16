@@ -45,17 +45,19 @@ sudo su -c "echo 'CookieAuthFileGroupReadable 1' >> /etc/tor/torrc"
 sudo su -c "echo 'LongLivedPorts 9033' >> /etc/tor/torrc"
 sudo systemctl restart tor.service
 
-fi
-
 echo ""
 wget https://github.com/XUEZ/xuez/releases/download/1.0.1.10/xuez-linux-cli-10110.tgz
 tar -xvzf xuez-linux-cli-10110.tgz
 echo ""
 
+fi
+
 echo "Are you installing a new Masternode (Y) Or updating to the most recent wallet (n)? [y/n]
 read SETUP
 if [[ $SETUP =~ "y" ]] || [[$SETUP =~ "Y" ]] ; then
 
+wget https://github.com/XUEZ/xuez/releases/download/1.0.1.10/xuez-linux-cli-10110.tgz
+tar -xvzf xuez-linux-cli-10110.tgz
 echo "Configure your masternodes now!"
 echo "Your recognised IP address is:"
 sudo hostname -I 
@@ -86,6 +88,7 @@ read IPDEFAULT
 	echo "masternodeaddr=$IP:$PORT" >> $CONF_DIR/$CONF_FILE
 	echo "masternodeprivkey=$PRIVKEY" >> $CONF_DIR/$CONF_FILE
 	./xuezd -daemon
+	sudo su -c "echo 'listenonion=1' >> /.xuez/xuez.conf"
 	echo "if server start failure try ./xuezd -reindex"
 	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 	echo "!                                                 !"
@@ -117,6 +120,7 @@ else
 	echo "port=$PORT" >> $CONF_DIR/$CONF_FILE
 	echo "masternodeaddr=$DIP:$PORT" >> $CONF_DIR/$CONF_FILE
 	echo "masternodeprivkey=$PRIVKEY" >> $CONF_DIR/$CONF_FILE
+	sudo su -c "echo 'listenonion=1' >> /.xuez/xuez.conf"
 	./xuezd -daemon
 	echo "if server start failure try ./xuezd -reindex"
 	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
