@@ -18,16 +18,28 @@ echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 echo ""
 echo ""
 echo ""
-echo "Do you want to create a user to configure your VPS out of ROOT (`y` if this is the first time) [y/n]"
+echo "Do you allow the script to create a user to configure your VPS out of ROOT (`y` if this is the first time) [y/n]"
 read USETUP
 	if 
 	[[ $USETUP =~ "y" ]] || [[$USETUP =~ "Y" ]] ; then
+sudo su -c "echo 'deb http://deb.torproject.org/torproject.org '$(lsb_release -c | cut -f2)' main' > /etc/apt/sources.list.d/torproject.list"
+	gpg --keyserver keys.gnupg.net --recv A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89
+	gpg --export A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 | sudo apt-key add -
+	sudo apt-get update
+	sudo apt-get install tor deb.torproject.org-keyring
+	sudo usermod -a -G debian-tor $(whoami)
+
+	sudo sed -i 's/#ControlPort 9051/ControlPort 9051/g' /etc/tor/torrc
+	sudo sed -i 's/#CookieAuthentication 1/CookieAuthentication 1/g' /etc/tor/torrc 
+	sudo su -c "echo 'CookieAuthFileGroupReadable 1' >> /etc/tor/torrc"
+	sudo su -c "echo 'LongLivedPorts 9033' >> /etc/tor/torrc"
+	sudo systemctl restart tor.service
 sudo adduser notroot
 usermod -aG sudo notroot
 su -notroot
 fi
 
-echo "Do you want to configure your VPS with the recomended Xuez settings? [y/n]"
+echo "Do you want to configure your VPS with the recommended Xuez settings? [y/n]"
 read DOSETUP
 	if 
 	[[ $DOSETUP =~ "y" ]] || [[$DOSETUP =~ "Y" ]] ; then
@@ -45,19 +57,6 @@ read DOSETUP
         sudo ufw allow 9033
 	echo "y" | sudo ufw enable
 	sudo ufw status
-
-	sudo su -c "echo 'deb http://deb.torproject.org/torproject.org '$(lsb_release -c | cut -f2)' main' > /etc/apt/sources.list.d/torproject.list"
-	gpg --keyserver keys.gnupg.net --recv A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89
-	gpg --export A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 | sudo apt-key add -
-	sudo apt-get update
-	sudo apt-get install tor deb.torproject.org-keyring
-	sudo usermod -a -G debian-tor $(whoami)
-
-	sudo sed -i 's/#ControlPort 9051/ControlPort 9051/g' /etc/tor/torrc
-	sudo sed -i 's/#CookieAuthentication 1/CookieAuthentication 1/g' /etc/tor/torrc 
-	sudo su -c "echo 'CookieAuthFileGroupReadable 1' >> /etc/tor/torrc"
-	sudo su -c "echo 'LongLivedPorts 9033' >> /etc/tor/torrc"
-	sudo systemctl restart tor.service
 	fi
 
 echo "Do you want to update or install the Xuez wallet? [y/n]"
