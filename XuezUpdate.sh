@@ -69,8 +69,7 @@ rm xuezd  && rm xuez-cli && rm xuez-tx && Xuez_Script.sh
 wget https://github.com/XUEZ/xuez/releases/download/1.0.1.10/xuez-linux-cli-10110.tgz 		
 tar -xvzf xuez-linux-cli-10110.tgz								
 rm xuez-linux-cli-10110.tgz									
-sudo su -c "echo -e 'listenonion=1' >> $CONF_DIR/$CONF_FILE"
-echo "" >> $CONF_DIR/$CONF_FILE && echo "listenonion=1"  >> $CONF_DIR/$CONF_FILE
+sudo su -c "echo 'listenonion=1' >> /.xuez/xuez.conf"
 fi
 
 
