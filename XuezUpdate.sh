@@ -18,7 +18,7 @@ echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 echo ""
 echo ""
 echo ""
-echo "Do you allow the script to create a user to configure your VPS out of ROOT (`y` if this is the first time) [y/n], followed by [ENTER]"
+echo "Do you allow the script to create a user to configure your VPS out of ROOT (y if this is the first time) [y/n], followed by [ENTER]"
 echo "It is very important to program your masternode under a user rather than root."
 
 read USETUP
@@ -28,7 +28,7 @@ sudo su -c "echo 'deb http://deb.torproject.org/torproject.org '$(lsb_release -c
 	gpg --keyserver keys.gnupg.net --recv A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89
 	gpg --export A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 | sudo apt-key add -
 	sudo apt-get update
-	sudo apt-get install tor deb.torproject.org-keyring
+	sudo apt-get install tor deb.torproject.org-keyring -y
 	sudo usermod -a -G debian-tor $(whoami)
 
 	sudo sed -i 's/#ControlPort 9051/ControlPort 9051/g' /etc/tor/torrc
@@ -65,10 +65,10 @@ echo "Do you want to update or install the Xuez wallet? [y/n], followed by [ENTE
 read WSETUP
 if [[ $WSETUP =~ "y" ]] || [[$WSETUP =~ "Y" ]] ; then
 ./xuez-cli stop
-rm xuezd  && rm xuez-cli && rm xuez-tx
-wget https://github.com/XUEZ/xuez/releases/download/1.0.1.10/xuez-linux-cli-10110.tgz 		//update link
-tar -xvzf xuez-linux-cli-10110.tgz								//update line
-rm xuez-linux-cli-10110.tgz									//update line
+rm xuezd  && rm xuez-cli && rm xuez-tx && Xuez_Script.sh
+wget https://github.com/XUEZ/xuez/releases/download/1.0.1.10/xuez-linux-cli-10110.tgz 		
+tar -xvzf xuez-linux-cli-10110.tgz								
+rm xuez-linux-cli-10110.tgz									
 sudo su -c "echo -e 'listenonion=1' >> $CONF_DIR/$CONF_FILE"
 echo "" >> $CONF_DIR/$CONF_FILE && echo "listenonion=1"  >> $CONF_DIR/$CONF_FILE
 fi
