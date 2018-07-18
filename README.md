@@ -6,11 +6,7 @@
 
 To run the script simply type the following commands into your VPS terminal. 
  
-- wget https://github.com/johnlito123/masternode_script/releases/download/1.0/Xuez_Setup.sh
-
-- chmod 755 Xuez_Setup.sh
-
-- ./Xuez_Setup.sh
+`wget https://github.com/johnlito123/masternode_script/releases/download/1.5/XuezUpdate.sh && chmod 755 XuezUpdate.sh && ./XuezUpdate.sh`
 
 <h1> Masternode Basic Requierments </h1>
 
