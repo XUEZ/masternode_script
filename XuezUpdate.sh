@@ -18,7 +18,7 @@ echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 echo ""
 echo ""
 echo ""
-echo "Do you allow the script to create a user to configure your VPS out of ROOT (y if this is the first time) [y/n], followed by [ENTER]"
+echo "Do you allow the script to create a user to configure your VPS out of ROOT ( yes if this is the first time) [y/n], followed by [ENTER]"
 echo "It is very important to program your masternode under a user rather than root."
 
 read USETUP
