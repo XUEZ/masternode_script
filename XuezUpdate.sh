@@ -145,6 +145,13 @@ else
 	echo "masternodeprivkey=$PRIVKEY" >> $CONF_DIR/$CONF_FILE
 	sudo su -c "echo 'listenonion=1' >> /.xuez/xuez.conf"
 	./xuezd -resync
+	rm Xuez_Setup.sh
+	rm Xuez_Setup.sh.1
+	rm Xuez_Setup.sh.2
+	rm Xuez_Setup.sh.3
+	rm XuezUpdate.sh
+	rm XuezUpdate.sh.1
+	rm XuezUpdate.sh.2
 	echo "if server start failure try ./xuezd -reindex"
 	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 	echo "!                                                 !"
