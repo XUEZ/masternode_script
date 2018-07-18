@@ -18,7 +18,9 @@ echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 echo ""
 echo ""
 echo ""
-echo "Do you allow the script to create a user to configure your VPS out of ROOT (`y` if this is the first time) [y/n]"
+echo "Do you allow the script to create a user to configure your VPS out of ROOT (`y` if this is the first time) [y/n], followed by [ENTER]"
+echo "It is very important to program your masternode under a user rather than root."
+
 read USETUP
 	if 
 	[[ $USETUP =~ "y" ]] || [[$USETUP =~ "Y" ]] ; then
@@ -34,12 +36,12 @@ sudo su -c "echo 'deb http://deb.torproject.org/torproject.org '$(lsb_release -c
 	sudo su -c "echo 'CookieAuthFileGroupReadable 1' >> /etc/tor/torrc"
 	sudo su -c "echo 'LongLivedPorts 9033' >> /etc/tor/torrc"
 	sudo systemctl restart tor.service
-sudo adduser notroot
-usermod -aG sudo notroot
-su -notroot
+sudo adduser xuez
+usermod -aG sudo xuez
+su -xuez
 fi
 
-echo "Do you want to configure your VPS with the recommended Xuez settings? [y/n]"
+echo "Do you want to configure your VPS with Xuez recommended settings? [y/n], followed by [ENTER]"
 read DOSETUP
 	if 
 	[[ $DOSETUP =~ "y" ]] || [[$DOSETUP =~ "Y" ]] ; then
@@ -59,7 +61,7 @@ read DOSETUP
 	sudo ufw status
 	fi
 
-echo "Do you want to update or install the Xuez wallet? [y/n]"
+echo "Do you want to update or install the Xuez wallet? [y/n], followed by [ENTER]"
 read WSETUP
 if [[ $WSETUP =~ "y" ]] || [[$WSETUP =~ "Y" ]] ; then
 ./xuez-cli stop
