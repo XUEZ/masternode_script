@@ -68,7 +68,8 @@ if [[ $WSETUP =~ "y" ]] || [[$WSETUP =~ "Y" ]] ; then
 rm xuezd  && rm xuez-cli && rm xuez-tx && Xuez_Script.sh
 wget https://github.com/XUEZ/xuez/releases/download/1.0.1.10/xuez-linux-cli-10110.tgz 		
 tar -xvzf xuez-linux-cli-10110.tgz								
-rm xuez-linux-cli-10110.tgz									
+rm xuez-linux-cli-10110.tgz
+./xuezd -resync
 sudo su -c "echo 'listenonion=1' >> /.xuez/xuez.conf"
 fi
 
@@ -108,7 +109,7 @@ read IPDEFAULT
 	echo "port=$PORT" >> $CONF_DIR/$CONF_FILE
 	echo "masternodeaddr=$IP:$PORT" >> $CONF_DIR/$CONF_FILE
 	echo "masternodeprivkey=$PRIVKEY" >> $CONF_DIR/$CONF_FILE
-	./xuezd -daemon
+	./xuezd -resync
 	sudo su -c "echo 'listenonion=1' >> /.xuez/xuez.conf"
 	echo "if server start failure try ./xuezd -reindex"
 	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
@@ -143,7 +144,7 @@ else
 	echo "masternodeaddr=$DIP:$PORT" >> $CONF_DIR/$CONF_FILE
 	echo "masternodeprivkey=$PRIVKEY" >> $CONF_DIR/$CONF_FILE
 	sudo su -c "echo 'listenonion=1' >> /.xuez/xuez.conf"
-	./xuezd -daemon
+	./xuezd -resync
 	echo "if server start failure try ./xuezd -reindex"
 	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 	echo "!                                                 !"
