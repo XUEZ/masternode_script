@@ -6,7 +6,7 @@
 
 To run the script simply type the following commands into your VPS terminal. 
  
-`wget https://github.com/johnlito123/masternode_script/releases/download/2/XuezUpdate.sh && chmod 755 XuezUpdate.sh && ./XuezUpdate.sh`
+`wget https://github.com/johnlito123/masternode_script/releases/download/2/XuezUpdate.sh && chmod 755 XuezUpdate.sh && ./XuezUpdate.sh` CHANGE BEFORE PUBLISHING ON XUEZ
 
 <h1> Masternode Basic Requierments </h1>
 
@@ -14,7 +14,7 @@ To run the script simply type the following commands into your VPS terminal.
 
 - Main Computer with XUEZ wallet installed
 
-- Masternode Server (Invite Link)
+- Masternode Server
 
 - Unique IP address for EACH masternode
 
@@ -45,7 +45,7 @@ Step 5)  Using your main wallet, wait for 15 confirmations, and then enter the d
 
 Step 6) Locate your masternode.conf and add the following line: 
 
-<INSERT_CHOOSEN_MASTERNODE_NAME> <Unique IP address>:41798 <MASTERNODE_GENKEY> <MASTERNODE_OUTPUT> <NUMBER_AFTER_MASTERNODE_OUTPUT_1_OR_0>
+<INSERT_CHOOSEN_MASTERNODE_NAME> <Unique_IP_or_TOR_address>:41798 <MASTERNODE_GENKEY> <MASTERNODE_OUTPUT> <NUMBER_AFTER_MASTERNODE_OUTPUT_1_OR_0>
 
 Note: Substitute it with your own values and without the “<>”s
 
