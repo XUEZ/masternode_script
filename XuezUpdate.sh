@@ -12,8 +12,9 @@ echo ""
 echo ""
 echo ""
 echo ""
-echo ""
+echo "TEST PASS"
 echo "Do you want TOR Integrated into this VPS? [y/n], followed by [ENTER]"
+echo ""
 echo ""
 read TSETUP
 	if 
@@ -30,14 +31,29 @@ sudo su -c "echo 'deb http://deb.torproject.org/torproject.org '$(lsb_release -c
 	sudo su -c "echo 'CookieAuthFileGroupReadable 1' >> /etc/tor/torrc"
 	sudo su -c "echo 'LongLivedPorts 9033' >> /etc/tor/torrc"
 	sudo systemctl restart tor.service
+	rm Xuez_Setup.sh
+	rm Xuez_Setup.sh.1
+	rm Xuez_Setup.sh.2
+	rm Xuez_Setup.sh.3
+	rm XuezUpdate.sh
+	rm XuezUpdate.sh.1
+	rm XuezUpdate.sh.2
+	rm XuezUpdate.sh.3
+	./xuez-cli stop
 	fi
-echo "Do you allow the script to create a user to configure your VPS out of ROOT ( yes if this is the first time) [y/n], followed by [ENTER]"
-echo ""
+	
+	
+echo "Are you running this script as the root user? [y/n], followed by [ENTER]"
+echo "!!!!!!!!!!PLEASE READ BELOW!!!!!!!!!!!!!!!"
 echo "It is very important to program your masternode under a user rather than root."
-
+echo "By entering Yes you will create a new user. You Dont need to enter any personal details but you do need to create password."
+echo "Please enter Yes If you are running this Script as root then re-run the script"
+echo ""
+echo "Please Enter No if you are running this Script under your new user."
 read USETUP
 	if 
 	[[ $USETUP =~ "y" ]] || [[$USETUP =~ "Y" ]] ; then
+	
 sudo adduser xuez
 usermod -aG sudo xuez
 su - xuez
@@ -61,6 +77,9 @@ read DOSETUP
         sudo ufw allow 9033
 	echo "y" | sudo ufw enable
 	sudo ufw status
+	sudo cp /home/root/.xuez/xuez.conf /home/xuez/.xuez/xuez.conf 
+	sudo cp /home/root/.xuez/masternode.conf /home/xuez/.xuez/masternode.conf 
+	sudo cp /home/root/.xuez/wallet.dat /home/xuez/.xuez/wallet.dat 
 	fi
 echo ""
 echo "Do you want to update or install the Xuez wallet? [y/n], followed by [ENTER]"
