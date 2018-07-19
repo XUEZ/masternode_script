@@ -99,7 +99,7 @@ read IPDEFAULT
 	echo "We are using your default IP address"
 	echo "Enter masternode private key for node, followed by [ENTER]: $ALIAS"
 	read PRIVKEY
-	CONF_DIR=~/xuez/.xuez\/
+	CONF_DIR=~/.xuez\/
 	CONF_FILE=xuez.conf
 	PORT=41798
 	IP=$(hostname -I)
@@ -108,7 +108,6 @@ read IPDEFAULT
 	echo "rpcpassword=passw"`shuf -i 100000-10000000 -n 1` >> $CONF_DIR/$CONF_FILE
 	echo "rpcallowip=127.0.0.1" >> $CONF_DIR/$CONF_FILE
 	echo "listen=1" >> $CONF_DIR/$CONF_FILE
-	echo "listenonion=1" >> $CONF_DIR/$CONF_FILE
 	echo "server=1" >> $CONF_DIR/$CONF_FILE
 	echo "daemon=1" >> $CONF_DIR/$CONF_FILE
 	echo "logtimestamps=1" >> $CONF_DIR/$CONF_FILE
@@ -119,8 +118,7 @@ read IPDEFAULT
 	echo "port=$PORT" >> $CONF_DIR/$CONF_FILE
 	echo "masternodeaddr=$IP:$PORT" >> $CONF_DIR/$CONF_FILE
 	echo "masternodeprivkey=$PRIVKEY" >> $CONF_DIR/$CONF_FILE
-	./xuezd -resync
-	sudo su -c "echo 'listenonion=1' >> /xuez/.xuez/xuez.conf"
+	./xuezd -daemon
 	echo "if server start failure try ./xuezd -reindex"
 	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 	echo "!                                                 !"
@@ -134,7 +132,7 @@ else
 	echo ""
 	echo "Enter masternode private key for node, followed by [ENTER]: $ALIAS"
 	read PRIVKEY
-	CONF_DIR=~//xuez/.xuez\/
+	CONF_DIR=~/.xuez\/
 	CONF_FILE=xuez.conf
 	PORT=41798
 	mkdir -p $CONF_DIR
@@ -142,7 +140,6 @@ else
 	echo "rpcpassword=passw"`shuf -i 100000-10000000 -n 1` >> $CONF_DIR/$CONF_FILE
 	echo "rpcallowip=127.0.0.1" >> $CONF_DIR/$CONF_FILE
 	echo "listen=1" >> $CONF_DIR/$CONF_FILE
-	echo "listenonion=1" >> $CONF_DIR/$CONF_FILE
 	echo "server=1" >> $CONF_DIR/$CONF_FILE
 	echo "daemon=1" >> $CONF_DIR/$CONF_FILE
 	echo "logtimestamps=1" >> $CONF_DIR/$CONF_FILE
@@ -153,21 +150,13 @@ else
 	echo "port=$PORT" >> $CONF_DIR/$CONF_FILE
 	echo "masternodeaddr=$DIP:$PORT" >> $CONF_DIR/$CONF_FILE
 	echo "masternodeprivkey=$PRIVKEY" >> $CONF_DIR/$CONF_FILE
-	sudo su -c "echo 'listenonion=1' >> /xuez/.xuez/xuez.conf"
-	./xuezd -resync
-	rm Xuez_Setup.sh
-	rm Xuez_Setup.sh.1
-	rm Xuez_Setup.sh.2
-	rm Xuez_Setup.sh.3
-	rm XuezUpdate.sh
-	rm XuezUpdate.sh.1
-	rm XuezUpdate.sh.2
-	rm XuezUpdate.sh.3
+	./xuezd -daemon
 	echo "if server start failure try ./xuezd -reindex"
 	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 	echo "!                                                 !"
 	echo "! Your MasterNode Is setup please close terminal  !"
 	echo "!   and continue the local wallet setup guide     !"
 	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	echo ""
 fi
 fi
