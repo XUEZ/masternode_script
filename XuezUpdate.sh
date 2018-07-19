@@ -84,7 +84,7 @@ read DOSETUP
 	sudo cp /home/root/.xuez/wallet.dat /home/xuez/.xuez/wallet.dat 
 	fi
 	
-echo "Are you installing/updating your Masternode? [y/n]
+echo "Are you installing/updating your Masternode? [y/n]"
 read MSETUP
 if
 [[ $MSETUP =~ "y" ]] || [[$MSETUP =~ "Y" ]] ; then
@@ -169,10 +169,5 @@ else
 	echo "! Your MasterNode Is setup please close terminal  !"
 	echo "!   and continue the local wallet setup guide     !"
 	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-	echo ""
 fi
 fi
-
-
-
-
