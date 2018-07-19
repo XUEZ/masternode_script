@@ -86,9 +86,9 @@ read DOSETUP
         sudo ufw allow 9033
 	echo "y" | sudo ufw enable
 	sudo ufw status
-	sudo cp /home/root/.xuez/xuez.conf /home/xuez/.xuez/xuez.conf 
-	sudo cp /home/root/.xuez/masternode.conf /home/xuez/.xuez/masternode.conf 
-	sudo cp /home/root/.xuez/wallet.dat /home/xuez/.xuez/wallet.dat 
+	sudo cp /root/.xuez/xuez.conf /home/xuez/.xuez/xuez.conf 
+    	sudo cp /root/.xuez/masternode.conf /home/xuez/.xuez/masternode.conf 
+    	sudo cp /root/.xuez/wallet.dat /home/xuez/.xuez/wallet.dat
 	fi
 	
 echo "Are you installing/updating your Masternode? [y/n]"
