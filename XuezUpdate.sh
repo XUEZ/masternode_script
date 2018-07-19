@@ -79,8 +79,7 @@ read DOSETUP
 	sudo ufw status
 	if
 	[[ -d "/root/.xuez" ]] ; then
-	sudo cp -rf /root/.xuez /home/xuez/
-	chown -R xuez:xuez /home/xuez/.xuez
+	sudo mv /root/.xuez /home/xuez/ && sudo chown -R xuez:xuez /home/xuez
 	fi
 	fi
 	
