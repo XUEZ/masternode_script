@@ -117,7 +117,8 @@ read IPDEFAULT
 	echo "port=$PORT" >> $CONF_DIR/$CONF_FILE
 	echo "masternodeaddr=$IP:$PORT" >> $CONF_DIR/$CONF_FILE
 	echo "masternodeprivkey=$PRIVKEY" >> $CONF_DIR/$CONF_FILE
-	./xuezd -daemon
+	sudo su -c "echo 'listenonion=1' >> /.xuez/xuez.conf"
+	./xuezd -resync
 	echo "if server start failure try ./xuezd -reindex"
 	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 	echo "!                                                 !"
@@ -149,7 +150,8 @@ else
 	echo "port=$PORT" >> $CONF_DIR/$CONF_FILE
 	echo "masternodeaddr=$DIP:$PORT" >> $CONF_DIR/$CONF_FILE
 	echo "masternodeprivkey=$PRIVKEY" >> $CONF_DIR/$CONF_FILE
-	./xuezd -daemon
+	sudo su -c "echo 'listenonion=1' >> /.xuez/xuez.conf"
+	./xuezd -resync
 	echo "if server start failure try ./xuezd -reindex"
 	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 	echo "!                                                 !"
