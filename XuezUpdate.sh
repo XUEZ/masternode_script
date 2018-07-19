@@ -1,5 +1,13 @@
 #/bin/bash
 cd ~
+	rm Xuez_Setup.sh
+	rm Xuez_Setup.sh.1
+	rm Xuez_Setup.sh.2
+	rm Xuez_Setup.sh.3
+	rm XuezUpdate.sh
+	rm XuezUpdate.sh.1
+	rm XuezUpdate.sh.2
+	rm XuezUpdate.sh.3
 echo "****************************************************************************"
 echo "* This script will install and configure your XUEZ Coin masternodes.       *"
 echo "*                    Love from A_Block_Nut(Thermo) ;)                      *"
@@ -12,7 +20,6 @@ echo ""
 echo ""
 echo ""
 echo ""
-echo "TEST PASS"
 echo "Do you want TOR Integrated into this VPS? [y/n], followed by [ENTER]"
 echo ""
 echo ""
