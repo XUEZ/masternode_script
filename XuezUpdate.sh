@@ -35,31 +35,38 @@ sudo su -c "echo 'deb http://deb.torproject.org/torproject.org '$(lsb_release -c
 	./xuez-cli stop
 	fi
 	
-	
+echo ""
+echo ""
+echo ""
+echo ""
 echo "Are you running this script as the root user? [y/n], followed by [ENTER]"
-echo ""
 echo "!!!!!!!!!!PLEASE READ BELOW!!!!!!!!!!!!!!!"
-echo ""
-echo "It is very important to program your masternode under a user rather than root."
-echo "By entering Yes you will create a new user. You Dont need to enter any personal details but you do need to create password."
-echo ""
-echo "OPTIONS BELOW"
-echo ""
-echo "Please enter Yes If you are running this Script as root then re-run the script"
-echo "Please enter Yes If you want to get into your created user"
-echo ""
+echo "***********************************************************************************************************************************"
+echo "*It is very important to program your masternode under a user rather than root.							*"
+echo "*By entering Yes you will create a new user. You Dont need to enter any personal details but you do need to create password.	*"
+echo "*																	*"
+echo "*OPTIONS BELOW															*"
+echo "*																	*"
+echo "*Please enter Yes If you are running this Script as root then re-run the script							*"
+echo "*Please enter Yes If you want to get into your created user									*"
+echo "*																	*"
 echo "Please Enter No if you are running this Script under your new user."
+echo "***********************************************************************************************************************************"
+
 read USETUP
 	if 
 	[[ $USETUP =~ "y" ]] || [[$USETUP =~ "Y" ]] ; then
 	
-sudo adduser -s /bin/bash -d /home/xuez xuez
+sudo adduser -s /bin/echo ""
+echo ""bash -d /home/xuez xuez
 #user will enter a password for the xuez account/user
 passwd xuez
 usermod -aG sudo xuez
 ssh-keygen -t rsa -b 4096 -P "" -f "/home/xuez/.ssh/id_rsa"
 fi
-
+echo ""
+echo ""
+echo ""
 echo "Do you want to configure your VPS with Xuez recommended settings? [y/n], followed by [ENTER]"
 read DOSETUP
 	if 
@@ -82,7 +89,9 @@ read DOSETUP
 	sudo mv /root/.xuez /home/xuez/ && sudo chown -R xuez:xuez /home/xuez
 	fi
 	fi
-	
+echo ""
+echo ""
+echo ""
 echo "Are you installing/updating your Masternode? [y/n]"
 read MSETUP
 if
