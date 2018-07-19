@@ -30,7 +30,7 @@ sudo su -c "echo 'deb http://deb.torproject.org/torproject.org '$(lsb_release -c
 	sudo su -c "echo 'CookieAuthFileGroupReadable 1' >> /etc/tor/torrc"
 	sudo su -c "echo 'LongLivedPorts 9033' >> /etc/tor/torrc"
 	sudo systemctl restart tor.service
-	
+	fi
 echo "Do you allow the script to create a user to configure your VPS out of ROOT ( yes if this is the first time) [y/n], followed by [ENTER]"
 echo ""
 echo "It is very important to program your masternode under a user rather than root."
