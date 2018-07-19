@@ -47,7 +47,9 @@ echo "Are you running this script as the root user? [y/n], followed by [ENTER]"
 echo "!!!!!!!!!!PLEASE READ BELOW!!!!!!!!!!!!!!!"
 echo "It is very important to program your masternode under a user rather than root."
 echo "By entering Yes you will create a new user. You Dont need to enter any personal details but you do need to create password."
+echo "OPTIONS BELOW"
 echo "Please enter Yes If you are running this Script as root then re-run the script"
+echo "Please enter Yes If you want to get into your created user"
 echo ""
 echo "Please Enter No if you are running this Script under your new user."
 read USETUP
@@ -81,21 +83,8 @@ read DOSETUP
 	sudo cp /home/root/.xuez/masternode.conf /home/xuez/.xuez/masternode.conf 
 	sudo cp /home/root/.xuez/wallet.dat /home/xuez/.xuez/wallet.dat 
 	fi
-echo ""
-echo "Do you want to update or install the Xuez wallet? [y/n], followed by [ENTER]"
-read WSETUP
-if [[ $WSETUP =~ "y" ]] || [[$WSETUP =~ "Y" ]] ; then
-./xuez-cli stop
-rm xuezd  && rm xuez-cli && rm xuez-tx && Xuez_Script.sh
-wget https://github.com/XUEZ/xuez/releases/download/1.0.1.10/xuez-linux-cli-10110.tgz 		
-tar -xvzf xuez-linux-cli-10110.tgz								
-rm xuez-linux-cli-10110.tgz
-./xuezd -resync
-sudo su -c "echo 'listenonion=1' >> /xuez/.xuez/xuez.conf"
-fi
-
-
-echo "Are you installing a new Masternode? [y/n]
+	
+echo "Are you installing/updating your Masternode? [y/n]
 read MSETUP
 if
 [[ $MSETUP =~ "y" ]] || [[$MSETUP =~ "Y" ]] ; then
@@ -183,3 +172,7 @@ else
 	echo ""
 fi
 fi
+
+
+
+
