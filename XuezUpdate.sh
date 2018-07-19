@@ -1,13 +1,6 @@
 #/bin/bash
 cd ~
-	rm Xuez_Setup.sh
-	rm Xuez_Setup.sh.1
-	rm Xuez_Setup.sh.2
-	rm Xuez_Setup.sh.3
-	rm XuezUpdate.sh
-	rm XuezUpdate.sh.1
-	rm XuezUpdate.sh.2
-	rm XuezUpdate.sh.3
+rm -rf Xuez_Setup.sh* XuezUpdate.sh*
 echo "****************************************************************************"
 echo "* This script will install and configure your XUEZ Coin masternodes.       *"
 echo "*                    Love from A_Block_Nut(Thermo) ;)                      *"
@@ -38,14 +31,7 @@ sudo su -c "echo 'deb http://deb.torproject.org/torproject.org '$(lsb_release -c
 	sudo su -c "echo 'CookieAuthFileGroupReadable 1' >> /etc/tor/torrc"
 	sudo su -c "echo 'LongLivedPorts 9033' >> /etc/tor/torrc"
 	sudo systemctl restart tor.service
-	rm Xuez_Setup.sh
-	rm Xuez_Setup.sh.1
-	rm Xuez_Setup.sh.2
-	rm Xuez_Setup.sh.3
-	rm XuezUpdate.sh
-	rm XuezUpdate.sh.1
-	rm XuezUpdate.sh.2
-	rm XuezUpdate.sh.3
+	rm -rf Xuez_Setup.sh* XuezUpdate.sh*
 	./xuez-cli stop
 	fi
 	
@@ -63,9 +49,14 @@ read USETUP
 	if 
 	[[ $USETUP =~ "y" ]] || [[$USETUP =~ "Y" ]] ; then
 	
-sudo adduser xuez
+sudo adduser -s /bin/bash -d /home/xuez xuez
+#user will enter a password for the xuez account/user
+passwd xuez
 usermod -aG sudo xuez
-su - xuez
+mkdir /home/xuez && cp .profile /home/xuez/
+su - xuez && cd ~
+mkdir /home/xuez/.ssh
+ssh-keygen -t rsa -b 4096 -P "" -f "/home/xuez/.ssh/id_rsa"
 fi
 
 echo "Do you want to configure your VPS with Xuez recommended settings? [y/n], followed by [ENTER]"
@@ -82,13 +73,14 @@ read DOSETUP
 	sudo ufw logging on
 	sudo ufw allow 22
 	sudo ufw allow 41798
-        sudo ufw allow 9051
         sudo ufw allow 9033
 	echo "y" | sudo ufw enable
 	sudo ufw status
-	sudo cp /root/.xuez/xuez.conf /home/xuez/.xuez/xuez.conf 
-    	sudo cp /root/.xuez/masternode.conf /home/xuez/.xuez/masternode.conf 
-    	sudo cp /root/.xuez/wallet.dat /home/xuez/.xuez/wallet.dat
+	if
+	[[ -d "/root/.xuez" ]] ; then
+	sudo cp -rf /root/.xuez /home/xuez/
+	chown -R xuez:xuez /home/xuez/.xuez
+	fi
 	fi
 	
 echo "Are you installing/updating your Masternode? [y/n]"
