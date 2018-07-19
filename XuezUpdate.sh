@@ -10,21 +10,14 @@ echo "**************************************************************************
 echo "" 
 echo ""
 echo ""
-echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-echo "!         DO NOT RUN THIS SCRIPT AS ROOT          !"
-echo "! Make sure you double check before hitting enter !"
-echo "!                                                 !"
-echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 echo ""
 echo ""
 echo ""
-echo "Do you allow the script to create a user to configure your VPS out of ROOT ( yes if this is the first time) [y/n], followed by [ENTER]"
+echo "Do you want TOR Integrated into this VPS? [y/n], followed by [ENTER]"
 echo ""
-echo "It is very important to program your masternode under a user rather than root."
-
-read USETUP
+read TSETUP
 	if 
-	[[ $USETUP =~ "y" ]] || [[$USETUP =~ "Y" ]] ; then
+	[[ $TSETUP =~ "y" ]] || [[$TSETUP =~ "Y" ]] ; then
 sudo su -c "echo 'deb http://deb.torproject.org/torproject.org '$(lsb_release -c | cut -f2)' main' > /etc/apt/sources.list.d/torproject.list"
 	gpg --keyserver keys.gnupg.net --recv A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89
 	gpg --export A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 | sudo apt-key add -
@@ -37,9 +30,17 @@ sudo su -c "echo 'deb http://deb.torproject.org/torproject.org '$(lsb_release -c
 	sudo su -c "echo 'CookieAuthFileGroupReadable 1' >> /etc/tor/torrc"
 	sudo su -c "echo 'LongLivedPorts 9033' >> /etc/tor/torrc"
 	sudo systemctl restart tor.service
+	
+echo "Do you allow the script to create a user to configure your VPS out of ROOT ( yes if this is the first time) [y/n], followed by [ENTER]"
+echo ""
+echo "It is very important to program your masternode under a user rather than root."
+
+read USETUP
+	if 
+	[[ $USETUP =~ "y" ]] || [[$USETUP =~ "Y" ]] ; then
 sudo adduser xuez
 usermod -aG sudo xuez
-su -xuez
+su - xuez
 fi
 
 echo "Do you want to configure your VPS with Xuez recommended settings? [y/n], followed by [ENTER]"
@@ -153,6 +154,7 @@ else
 	rm XuezUpdate.sh
 	rm XuezUpdate.sh.1
 	rm XuezUpdate.sh.2
+	rm XuezUpdate.sh.3
 	echo "if server start failure try ./xuezd -reindex"
 	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 	echo "!                                                 !"
