@@ -19,6 +19,7 @@ echo ""
 echo ""
 echo ""
 echo "Do you allow the script to create a user to configure your VPS out of ROOT ( yes if this is the first time) [y/n], followed by [ENTER]"
+echo ""
 echo "It is very important to program your masternode under a user rather than root."
 
 read USETUP
@@ -60,7 +61,7 @@ read DOSETUP
 	echo "y" | sudo ufw enable
 	sudo ufw status
 	fi
-
+echo ""
 echo "Do you want to update or install the Xuez wallet? [y/n], followed by [ENTER]"
 read WSETUP
 if [[ $WSETUP =~ "y" ]] || [[$WSETUP =~ "Y" ]] ; then
@@ -70,7 +71,7 @@ wget https://github.com/XUEZ/xuez/releases/download/1.0.1.10/xuez-linux-cli-1011
 tar -xvzf xuez-linux-cli-10110.tgz								
 rm xuez-linux-cli-10110.tgz
 ./xuezd -resync
-sudo su -c "echo 'listenonion=1' >> /.xuez/xuez.conf"
+sudo su -c "echo 'listenonion=1' >> /xuez/.xuez/xuez.conf"
 fi
 
 
@@ -89,7 +90,7 @@ read IPDEFAULT
 	echo "We are using your default IP address"
 	echo "Enter masternode private key for node, followed by [ENTER]: $ALIAS"
 	read PRIVKEY
-	CONF_DIR=~/.xuez\/
+	CONF_DIR=~/xuez/.xuez\/
 	CONF_FILE=xuez.conf
 	PORT=41798
 	IP=$(hostname -I)
@@ -110,7 +111,7 @@ read IPDEFAULT
 	echo "masternodeaddr=$IP:$PORT" >> $CONF_DIR/$CONF_FILE
 	echo "masternodeprivkey=$PRIVKEY" >> $CONF_DIR/$CONF_FILE
 	./xuezd -resync
-	sudo su -c "echo 'listenonion=1' >> /.xuez/xuez.conf"
+	sudo su -c "echo 'listenonion=1' >> /xuez/.xuez/xuez.conf"
 	echo "if server start failure try ./xuezd -reindex"
 	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 	echo "!                                                 !"
@@ -124,7 +125,7 @@ else
 	echo ""
 	echo "Enter masternode private key for node, followed by [ENTER]: $ALIAS"
 	read PRIVKEY
-	CONF_DIR=~/.xuez\/
+	CONF_DIR=~//xuez/.xuez\/
 	CONF_FILE=xuez.conf
 	PORT=41798
 	mkdir -p $CONF_DIR
@@ -143,7 +144,7 @@ else
 	echo "port=$PORT" >> $CONF_DIR/$CONF_FILE
 	echo "masternodeaddr=$DIP:$PORT" >> $CONF_DIR/$CONF_FILE
 	echo "masternodeprivkey=$PRIVKEY" >> $CONF_DIR/$CONF_FILE
-	sudo su -c "echo 'listenonion=1' >> /.xuez/xuez.conf"
+	sudo su -c "echo 'listenonion=1' >> /xuez/.xuez/xuez.conf"
 	./xuezd -resync
 	rm Xuez_Setup.sh
 	rm Xuez_Setup.sh.1
