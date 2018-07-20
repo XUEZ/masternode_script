@@ -2,7 +2,7 @@
   <img src="https://xuezcoin.com/wp-content/uploads/2018/07/XuezLogo.png" width="250"/>
 </p>
 
-# <h>  VPS Masternode TOR Ready Setup script. </h>
+# <h>  VPS Masternode with TOR ready setup script. </h>
 
 To run the script simply type the following commands into your VPS terminal. 
  
