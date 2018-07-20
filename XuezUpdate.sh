@@ -157,12 +157,8 @@ else
 	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 	echo ""
 fi
-fi
-
 else 
 
-echo ""
-echo ""
 echo ""
 echo "Do you want TOR Integrated into this VPS? [y/n], followed by [ENTER]"
 echo ""
