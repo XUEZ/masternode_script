@@ -61,7 +61,7 @@ read USETUP
 	
 sudo adduser xuez
 usermod -aG sudo xuez
-+su - xuez
+sudo su - xuez
 fi
 echo ""
 echo ""
@@ -83,10 +83,15 @@ read DOSETUP
         sudo ufw allow 9033
 	echo "y" | sudo ufw enable
 	sudo ufw status
-	if
-	[[ -d "/root/.xuez" ]] ; then
-	sudo mv /root/.xuez /home/xuez/ && sudo chown -R xuez:xuez /home/xuez
-	fi
+./xuez-cli stop
+rm xuezd
+rm xuez-cli
+rm xuez-tx
+wget https://github.com/XUEZ/xuez/releases/download/1.0.1.10/xuez-linux-cli-10110.tgz
+tar -xf xuez-linux-cli-10110.tgz
+rm xuez-linux-cli-10110.tgz
+sudo su -c "echo 'listenonion=1' >> /.xuez/xuez.conf"
+./xuezd -resync
 	fi
 echo ""
 echo ""
