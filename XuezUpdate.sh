@@ -14,16 +14,16 @@ echo "!!!!!!!!!!PLEASE READ CAREFULLY!!!!!!!!!!!!!!!"
 echo ""
 echo "***********************************************************************************"
 echo "* It is very important to program your masternode under a user rather than root.	*"
-echo "* 		By entering Yes you will create a new user.			*"
+echo "* 		By entering Yes you will create a new user.								*"
 echo "* You Dont need to enter any personal details but you do need to create password.	*"
-echo "*											*"
+echo "*																					*"
 echo "*----Are you running this script as the root user? [y/n], followed by [ENTER]-----*"
-echo "* 										*"
+echo "* 																				*"
 echo "*	------------------------OPTIONS BELOW-------------------------------------------*"
-echo "* 1 - Enter Yes If you are running this Script as root then re-run the script	*"
-echo "* 2 - Enter Yes If you want to get into your created user			*"
-echo "*											*"
-echo "* 3 - Please Enter No if you are running this Script under your new user.		*"
+echo "* 1 - Enter Yes If you are running this Script as root then re-run this script	*"
+echo "* 2 - Enter Yes If you want to get into your created user							*"
+echo "*																					*"
+echo "* 3 - Please Enter No if you are running this Script under your new user.			*"
 echo "***********************************************************************************"
 read USETUP
 	if 
@@ -156,6 +156,7 @@ else
 	echo "!   and continue the local wallet setup guide     !"
 	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 	echo ""
+fi
 fi
 
 else 
