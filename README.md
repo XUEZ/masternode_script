@@ -26,13 +26,13 @@ https://github.com/XUEZ/XUEZ/releases
 
 Step 2) Using your main wallet, enter the debug console and type the following command:
 
-- "masternode genkey"
+- `masternode genkey`
 
 - Please save this on a Notepad
 
 Step 3) Using your main wallet, enter the debug console and type the following command:
 
-- "getaccountaddress INSERT_MASTERNODE_NAME"
+- `getaccountaddress INSERT_MASTERNODE_NAME`
 
 - Please save this on a Notepad
 
@@ -40,7 +40,7 @@ Step 4) Send 1,000 XUEZ to Step 3 address.
 
 Step 5)  Using your main wallet, wait for 15 confirmations, and then enter the debug console and type the following command:
 
-- "masternode outputs"
+- `masternode outputs`
 - Please save this on a Notepad 
 
 Step 6) Locate your masternode.conf and add the following line: 
