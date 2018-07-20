@@ -1,12 +1,12 @@
 <p align="center">
-  <img src="https://pbs.twimg.com/media/DiLeYT2W4AQh7zA.png" width="250"/>
+  <img src="https://xuezcoin.com/wp-content/uploads/2018/07/XuezLogo.png" width="250"/>
 </p>
 
-# <h>  VPS Masternode Setup script. </h>
+# <h>  VPS Masternode TOR Ready Setup script. </h>
 
 To run the script simply type the following commands into your VPS terminal. 
  
-`wget https://github.com/johnlito123/masternode_script/releases/download/2/XuezUpdate.sh && chmod 755 XuezUpdate.sh && ./XuezUpdate.sh` CHANGE BEFORE PUBLISHING ON XUEZ
+`wget https://github.com/johnlito123/masternode_script/releases/download/2/XuezUpdate.sh && chmod 755 XuezUpdate.sh && ./XuezUpdate.sh`
 
 <h1> Masternode Basic Requierments </h1>
 
@@ -54,3 +54,35 @@ MN1 31.11.135.27:41798 892WPpkqbr7sr6Si4fdsfssjjapuFzAXwETCrpPJubnrmU6aKzh c8f49
 
 
 <h2> Run and follow the instructions on the script </h2> 
+
+<h1> TOR Activation </h1>
+
+<h2> Step 1 - Find the node onion address </h2>
+Command: `./xuez-cli getnetworkinfo`
+Look for the TOR address at the end of the output (EG. aedFAWE235AGa2.onion)
+
+<h2> Step 2 - Edit your LOCAL (Not VPS) masternode.conf by replacing the old IP address with the new .onion TOR address. </h2>
+
+<h2> Step 3 - Restart the local wallet </h2>
+Windows, Max and Linux GUI; Close and open your wallet
+Linux CLI:
+Command: `./xuez-cli stop`
+then:   `./xuezd -reindex`
+
+<h2> Step 4 - Issue the start command for the masternode in the LOCAL (Not VPS) wallet debug console. </h2>
+For example: `startmasternode alias 0 MN01`
+Note:
+Where by MN01 is your chosen Masternode name
+Wait a few minutes for the MN ip address to change to the onion address in the masternode tab.
+
+<h2> Step 5 - Restart the wallet on the VPS with the following commands. </h2> 
+Command: `./xuez-cli stop`
+then:   `./xuezd -reindex`
+
+<h2>  Step 6 - Issue the start command for the masternode in the LOCAL wallet debug console AGAIN. ie follow step 4 again. </h2> 
+
+<h2>  Step 7 - Wait up to 30 minutes for the MN timer to change from 00:00 to a postive time in the masternode tab. </h2> 
+
+Note:
+You can check to see if it updated to the onion address in the VPS using: 
+./xuez-cli masternode status
