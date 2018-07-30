@@ -8,7 +8,7 @@ To run the script simply type the following commands into your VPS terminal.
  
 `wget https://github.com/xuez/masternode_script/releases/download/2/XuezUpdate.sh && chmod 755 XuezUpdate.sh && ./XuezUpdate.sh`
 
-<h1> Masternode Basic Requierments </h1>
+<h1> Masternode Basic Requirements </h1>
 
 - 1,000 XUEZ
 
