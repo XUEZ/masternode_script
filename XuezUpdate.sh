@@ -3,7 +3,7 @@ cd ~
 rm -rf Xuez_Setup.sh* XuezUpdate.sh*
 echo "****************************************************************************"
 echo "* This script will install and configure your XUEZ Coin masternodes.       *"
-echo "*                     									                 *"
+echo "*                 					                 *"
 echo "*    If you have any issues please ask for help on the XUEZ discord.       *"
 echo "*                      https://discord.gg/QWcK5Yk                          *"
 echo "*                        https://xuezcoin.com/                             *"
@@ -13,7 +13,7 @@ echo ""
 echo "!!!!!!!!!!PLEASE READ CAREFULLY!!!!!!!!!!!!!!!"
 echo ""
 echo "*************************************************************"
-echo "* 				Express Installation Script				  *"
+echo "* 		Express Installation Script		  *"
 echo "*************************************************************"
 echo ""
 echo ""
@@ -98,37 +98,3 @@ read ipd
 	echo "!   and continue the local wallet setup guide     !"
 	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 	echo ""
-else
-	echo "Type the custom IP of this node, followed by [ENTER]:"
-	read DIP
-	echo ""
-	echo "Enter masternode private key for node, followed by [ENTER]: $ALIAS"
-	read PRIVKEY
-	CONF_DIR=~/.xuez\/
-	CONF_FILE=xuez.conf
-	PORT=41798
-	mkdir -p $CONF_DIR
-	echo "rpcuser=user"`shuf -i 100000-10000000 -n 1` >> $CONF_DIR/$CONF_FILE
-	echo "rpcpassword=passw"`shuf -i 100000-10000000 -n 1` >> $CONF_DIR/$CONF_FILE
-	echo "rpcallowip=127.0.0.1" >> $CONF_DIR/$CONF_FILE
-	echo "listen=1" >> $CONF_DIR/$CONF_FILE
-	echo "server=1" >> $CONF_DIR/$CONF_FILE
-	echo "daemon=1" >> $CONF_DIR/$CONF_FILE
-	echo "logtimestamps=1" >> $CONF_DIR/$CONF_FILE
-	echo "maxconnections=256" >> $CONF_DIR/$CONF_FILE
-	echo "masternode=1" >> $CONF_DIR/$CONF_FILE
-	echo "" >> $CONF_DIR/$CONF_FILE
-	echo "" >> $CONF_DIR/$CONF_FILE
-	echo "port=$PORT" >> $CONF_DIR/$CONF_FILE
-	echo "masternodeaddr=$DIP:$PORT" >> $CONF_DIR/$CONF_FILE
-	echo "masternodeprivkey=$PRIVKEY" >> $CONF_DIR/$CONF_FILE
-	sudo su -c "echo 'listenonion=1' >> /.xuez/xuez.conf"
-	./xuezd -resync
-	echo "if server start failure try ./xuezd -reindex"
-	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-	echo "!                                                 !"
-	echo "! Your MasterNode Is setup please close terminal  !"
-	echo "!   and continue the local wallet setup guide     !"
-	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-	echo ""
-fi
