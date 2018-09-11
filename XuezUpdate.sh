@@ -51,10 +51,7 @@ echo "**************************************************************************
 echo ""
 echo ""
 echo ""
-echo "Start Installation? [Y/N]"
-read USETUP
-	if 
-	[[ $USETUP =~ "y" ]] || [[$USETUP =~ "Y" ]] ; then
+
 sudo su -c "echo 'deb http://deb.torproject.org/torproject.org '$(lsb_release -c | cut -f2)' main' > /etc/apt/sources.list.d/torproject.list"
 	gpg --keyserver keys.gnupg.net --recv A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89
 	gpg --export A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 | sudo apt-key add -
@@ -67,12 +64,8 @@ sudo su -c "echo 'deb http://deb.torproject.org/torproject.org '$(lsb_release -c
 	sudo su -c "echo 'CookieAuthFileGroupReadable 1' >> /etc/tor/torrc"
 	sudo su -c "echo 'LongLivedPorts 9033' >> /etc/tor/torrc"
 	sudo systemctl restart tor.service
-fi
 
-echo "Do you want to configure your VPS with the recommended Xuez settings? [y/n]"
-read DOSETUP
-	if 
-	[[ $DOSETUP =~ "y" ]] || [[$DOSETUP =~ "Y" ]] ; then
+	
 	sudo apt-get update
 	sudo apt-get -y upgrade
 	sudo apt-get -y dist-upgrade
@@ -95,15 +88,10 @@ tar -xvzf xuez-linux-cli-10110.tgz
 rm xuez-linux-cli-10110.tgz									
 sudo su -c "echo -e 'listenonion=1' >> $CONF_DIR/$CONF_FILE"
 echo "" >> $CONF_DIR/$CONF_FILE && echo "listenonion=1"  >> $CONF_DIR/$CONF_FILE
-fi
 
 echo "Masternode Configuration"
 echo "Your recognised IP address is:"
 sudo hostname -I 
-echo "Is this the IP you wish to use for MasterNode ? [y/n] , followed by [ENTER]"
-read IPDEFAULT
-	if
-	[[ $IPDEFAULT =~ "y" ]] || [[$IPDEFAULT =~ "Y" ]] ; then
 	echo ""
 	echo "We are using your default IP address"
 	echo "Enter masternode private key for node, followed by [ENTER]: $ALIAS"
