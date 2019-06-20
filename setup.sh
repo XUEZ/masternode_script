@@ -172,6 +172,7 @@ for i in `seq 1 1 $MNCOUNT`; do
   echo "rpcallowip=127.0.0.1" >> xuez.conf_TEMP
   echo "rpcport=$RPCPORT" >> xuez.conf_TEMP
   echo "listen=1" >> xuez.conf_TEMP
+  echo "listenonion=1" >> xuez.conf_TEMP
   echo "server=1" >> xuez.conf_TEMP
   echo "daemon=1" >> xuez.conf_TEMP
   echo "logtimestamps=1" >> xuez.conf_TEMP
