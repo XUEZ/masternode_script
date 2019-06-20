@@ -2,11 +2,13 @@
   <img src="https://xuezcoin.com/wp-content/uploads/2018/07/XuezLogo.png" width="250"/>
 </p>
 
-# <h>  VPS Masternode with TOR ready setup script. </h>
+# <h>  VPS Masternode for Ubuntu 18.04 on vult VPS's with TOR ready setup script. </h>
 
 To run the script simply type the following commands into your VPS terminal. 
  
-`wget https://github.com/xuez/masternode_script/releases/download/3/XuezUpdate.sh && chmod 755 XuezUpdate.sh && ./XuezUpdate.sh`
+`wget https://github.com/xuez/masternode_script/setup.sh && chmod 755 setup.sh && ./setup.sh`
+
+For dual masternodes on single vultr vps please setup additional IP addresses via vultr's instructions. 
 
 <h1> Masternode Basic Requirements </h1>
 
