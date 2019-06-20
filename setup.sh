@@ -110,6 +110,8 @@ if [[ $DOSETUP =~ "y" ]] ; then
   
   sudo apt-get install -y ufw
   sudo ufw allow ssh/tcp
+  sudo ufw allow 9051
+  sudo ufw allow 9033
   sudo ufw limit ssh/tcp
   sudo ufw logging on
   echo "y" | sudo ufw enable
